@@ -17,10 +17,16 @@ single folder, so it uploads cleanly even file-by-file through GitHub's web
 index.html                 landing page — program selector
 meal.html                  Meal section (3 categories, 13 items)
 optional-program.html      Optional Program section (4 categories, 16 items)
-style.css                  shared design system
+style.css                  shared design system + @font-face declarations
 main.js                    scroll-spy for the on-page index
 *.jpg / *.png               logos + photos (optimized, ~4 MB total)
+ICONESSODisplay-*.woff2     brand display typeface (headlines)
+ICONESSOText-*.woff2        brand text typeface (body, labels, nav)
 ```
+
+Typography uses the brand's own ICONESSO font files, loaded locally via
+`@font-face` in `style.css` — no external font CDN, so it also works if the
+site is ever mirrored somewhere without internet access to Google Fonts.
 
 ## Publish to GitHub Pages
 
