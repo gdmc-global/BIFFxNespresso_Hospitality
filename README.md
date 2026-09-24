@@ -1,7 +1,7 @@
 # BIFF x NESPRESSO Hospitality — Guest Web Guide
 
 A static, index-based hospitality guide for BIFF x NESPRESSO guests, covering
-three sections reachable from the homepage:
+four sections reachable from the homepage:
 
 - **Meal** (`meal.html`) — Paradise Hotel dining, optional local restaurants,
   B2B dining (3 categories, 13 items)
@@ -9,6 +9,8 @@ three sections reachable from the homepage:
   the exclusive concierge map (2 categories, 9 items + 2 map pages)
 - **Transportation** (`transportation.html`) — step-by-step guide to setting
   up and using Uber for Business in Korea (3 sections, 8 steps)
+- **Map** (`map.html`) — every Meal and Experience location on one interactive
+  map; tap a pin or a listing to open it directly in Google Maps (22 locations)
 
 No build step, no subfolders — every file (HTML, CSS, JS, images, fonts)
 sits in one single folder, so it uploads cleanly even file-by-file through
@@ -17,10 +19,15 @@ GitHub's web "Upload files" button.
 ## Structure (all files in one folder — no subfolders)
 
 ```
-index.html                 landing page — guide index (Meal / Experiences / Transportation)
+index.html                 landing page — guide index (Meal / Experiences / Transportation / Map)
 meal.html                  Meal section
 experiences.html           Experiences section (Busan attractions + concierge map)
 transportation.html        Transportation section (Uber for Business guide)
+map.html                   All-locations interactive map
+places-data.js             lat/lng + Google place_id for all 22 locations
+map.js                     renders the Leaflet map + location lists from places-data.js
+leaflet.js / leaflet.css    self-hosted Leaflet map library (no external CDN)
+leaflet-*.png               Leaflet's own UI icons (zoom control, etc.)
 style.css                  shared design system + @font-face declarations
 main.js                    scroll-spy for the on-page index
 *.jpg / *.png               logos + photos + concierge map pages + Uber screenshots
@@ -28,8 +35,12 @@ ICONESSODisplay-*.woff2     brand display typeface (headlines)
 ICONESSOText-*.woff2        brand text typeface (body, labels, nav)
 ```
 
-Typography uses the brand's own ICONESSO font files, loaded locally via
-`@font-face` in `style.css` — no external font CDN.
+Typography uses the brand's own ICONESSO font files, and the map uses a
+self-hosted copy of Leaflet — both loaded locally via relative paths, no
+external CDN, so the whole site works even if a viewer's network blocks
+third-party script hosts. The map's tile imagery itself (the background map
+graphics) still loads from OpenStreetMap's servers at view time, same as any
+embedded map.
 
 Every page's `<head>` also carries Open Graph / Twitter Card meta tags
 (`og:title`, `og:image`, etc.) for link previews in KakaoTalk, Slack, iMessage,
@@ -77,6 +88,10 @@ git push -u origin main
   to add a new item.
 - Photos are referenced by filename only (e.g. `src="opt1-geumsu-bokguk.jpg"`).
   Add a new photo to this same folder and point a card's `src` at it.
+- **To add or edit a map location**: open `places-data.js` and add/edit a line
+  in the `PLACES` array — `name`, `sub` (optional subtitle), `address`, `lat`,
+  `lng`, and `placeId` (the Google Place ID). The map and both location lists
+  on `map.html` render automatically from this one file.
 - Colors, type, and spacing are all defined once as CSS variables at the top
   of `style.css` (`:root { ... }`).
 - To force KakaoTalk/Slack to refresh a stale link preview after editing,

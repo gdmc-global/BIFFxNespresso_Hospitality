@@ -652,18 +652,25 @@ button:focus-visible,
 @media (max-width: 900px) {
   .ticket-row--3 { grid-template-columns: 1fr; }
 }
-.ticket-row--3 .ticket {
+.ticket-row--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1100px) {
+  .ticket-row--4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .ticket-row--4 { grid-template-columns: 1fr; }
+}
+.ticket-row--3 .ticket, .ticket-row--4 .ticket {
   flex-wrap: wrap;
   align-items: flex-start;
   padding: 26px 26px 22px;
 }
-.ticket-row--3 .ticket__body { flex: 1 1 100%; }
-.ticket-row--3 .ticket__count {
+.ticket-row--3 .ticket__body, .ticket-row--4 .ticket__body { flex: 1 1 100%; }
+.ticket-row--3 .ticket__count, .ticket-row--4 .ticket__count {
   order: 3;
   width: 100%;
   margin-top: 14px;
 }
-.ticket-row--3 .ticket__arrow {
+.ticket-row--3 .ticket__arrow, .ticket-row--4 .ticket__arrow {
   position: absolute;
   top: 26px;
   right: 26px;
@@ -851,4 +858,131 @@ button:focus-visible,
   font-size: 14px;
   color: var(--charcoal-70);
   margin: 0;
+}
+
+/* ===========================================================
+   All-locations map (map.html)
+   =========================================================== */
+#map {
+  width: 100%;
+  height: 62vh;
+  min-height: 420px;
+  border: 1px solid var(--line);
+  background: var(--cream-dim);
+}
+
+.map-legend {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 0 22px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--charcoal-70);
+}
+.map-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.map-legend .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.map-legend .dot--meal { background: var(--wine); }
+.map-legend .dot--exp { background: var(--gold); }
+.map-legend .dot--venue { background: var(--charcoal); }
+
+.leaflet-pin {
+  width: 26px;
+  height: 26px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid var(--paper);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.leaflet-pin span {
+  transform: rotate(45deg);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--paper);
+}
+.leaflet-pin--meal { background: var(--wine); }
+.leaflet-pin--exp { background: var(--gold); }
+.leaflet-pin--venue { background: var(--charcoal); }
+
+.leaflet-popup-content-wrapper {
+  border-radius: 2px;
+  font-family: var(--font-body);
+}
+.map-popup__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--wine);
+  margin: 0 0 4px;
+}
+.map-popup__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  margin: 0 0 8px;
+}
+.map-popup__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--wine);
+  text-decoration: none;
+  border-bottom: 1px solid var(--wine);
+  padding-bottom: 1px;
+}
+
+.place-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+.place-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  text-decoration: none;
+  color: var(--charcoal);
+  border-bottom: 1px solid var(--line);
+  transition: background 0.15s ease;
+}
+.place-row:last-child { border-bottom: none; }
+.place-row:hover { background: var(--blush-soft); }
+.place-row__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.place-row__addr {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--charcoal-70);
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.place-row__arrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--wine);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  .place-row { flex-wrap: wrap; }
+  .place-row__addr { flex-basis: 100%; order: 3; white-space: normal; }
 }

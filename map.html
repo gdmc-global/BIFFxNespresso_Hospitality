@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Map — BIFF x NESPRESSO Hospitality</title>
+<meta name="description" content="All Meal and Experience locations for BIFF x NESPRESSO Hospitality guests on one map — tap any pin or listing to open it in Google Maps.">
+
+<!-- Link preview (KakaoTalk, Slack, iMessage, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gdmc-global.github.io/BIFFxNespresso_Hospitality/map.html">
+<meta property="og:title" content="Map — BIFF x NESPRESSO Hospitality">
+<meta property="og:description" content="All Meal and Experience locations on one map — tap any pin to open it in Google Maps.">
+<meta property="og:image" content="https://gdmc-global.github.io/BIFFxNespresso_Hospitality/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Map — BIFF x NESPRESSO Hospitality">
+<meta name="twitter:description" content="All Meal and Experience locations on one map — tap any pin to open it in Google Maps.">
+<meta name="twitter:image" content="https://gdmc-global.github.io/BIFFxNespresso_Hospitality/og-image.jpg">
+
+<link rel="stylesheet" href="leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sitebar">
+  <div class="wrap sitebar__row">
+    <a class="sitebar__brand" href="index.html">
+      <img src="logo-dark.png" alt="Nespresso"> BIFF Hospitality
+    </a>
+    <nav class="sitebar__index" aria-label="Section index">
+      <a href="index.html"><span class="idx-no">00</span> Index</a>
+      <a href="meal.html"><span class="idx-no">01</span> Meal</a>
+      <a href="experiences.html"><span class="idx-no">02</span> Experiences</a>
+      <a href="transportation.html"><span class="idx-no">03</span> Transportation</a>
+      <a href="map.html" class="is-active"><span class="idx-no">04</span> Map</a>
+    </nav>
+  </div>
+</div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <a class="back-link" href="index.html">&#8592; Back to Index</a>
+    <p class="eyebrow">04 — Map</p>
+    <h1>All locations</h1>
+    <p class="lede">Every restaurant, hotel, and experience in one place. Tap a pin or a listing below to open it directly in Google Maps.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" style="padding-top:8px;">
+    <div class="map-legend">
+      <span><span class="dot dot--meal"></span> Meal</span>
+      <span><span class="dot dot--exp"></span> Experiences</span>
+      <span><span class="dot dot--venue"></span> Key Venues</span>
+    </div>
+    <div id="map"></div>
+  </div>
+
+  <!-- MEAL LOCATIONS -->
+  <section class="category" id="meal-locations">
+    <div class="wrap">
+      <div class="category__head">
+        <h2>01 · Meal Locations</h2>
+      </div>
+      <div class="place-list" id="list-meal"></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE LOCATIONS -->
+  <section class="category" id="experience-locations">
+    <div class="wrap">
+      <div class="category__head">
+        <h2>02 · Experience Locations</h2>
+      </div>
+      <div class="place-list" id="list-experiences"></div>
+    </div>
+  </section>
+
+  <!-- KEY VENUES -->
+  <section class="category" id="venue-locations">
+    <div class="wrap">
+      <div class="category__head">
+        <h2>03 · Key Venues</h2>
+      </div>
+      <div class="place-list" id="list-venues"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="sitefoot">
+  <div class="wrap sitefoot__row">
+    <img src="logo-dark.png" alt="Nespresso">
+    <small>BIFF x NESPRESSO HOSPITALITY — GUEST GUIDE</small>
+  </div>
+</footer>
+
+<script src="leaflet.js"></script>
+<script src="places-data.js"></script>
+<script src="map.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
