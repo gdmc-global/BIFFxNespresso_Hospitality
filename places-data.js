@@ -17,9 +17,9 @@ const PLACES = [
   { category: "meal", name: "Le Dorer", sub: "B2B Clients", address: "37 Marine City 3-ro", lat: 35.1554848, lng: 129.1466401, placeId: "ChIJ3yQ_9a6SaDURZ1fPnia4NUA" },
 
   // ---- KEY VENUES ----
-  { category: "venue", name: "Busan Cinema Center", address: "120 Suyeonggangbyeon-daero, Haeundae-gu", lat: 35.1711671, lng: 129.1271917, placeId: "ChIJD2H59MOSaDURcTxRbHWyNqI" },
-  { category: "venue", name: "Paradise Hotel Busan", address: "296 Haeundaehaebyeon-ro, Haeundae-gu", lat: 35.1601338, lng: 129.1646875, placeId: "ChIJcewmsUKNaDURvdd647woro8" },
-  { category: "venue", name: "Lavi de Atlan", address: "37 Gunam-ro, Haeundae-gu", lat: 35.1610456, lng: 129.1614329, placeId: "ChIJj1Zdu12NaDURAo5jP4ik_y4" },
+  { category: "venue", name: "Busan Cinema Center", sub: "영화의전당", address: "120 Suyeonggangbyeon-daero, Haeundae-gu", lat: 35.1711671, lng: 129.1271917, placeId: "ChIJD2H59MOSaDURcTxRbHWyNqI" },
+  { category: "venue", name: "Paradise Hotel Busan", sub: "파라다이스호텔", address: "296 Haeundaehaebyeon-ro, Haeundae-gu", lat: 35.1601338, lng: 129.1646875, placeId: "ChIJcewmsUKNaDURvdd647woro8" },
+  { category: "venue", name: "Lavi de Atlan", sub: "라비드아틀란", address: "37 Gunam-ro, Haeundae-gu", lat: 35.1610456, lng: 129.1614329, placeId: "ChIJj1Zdu12NaDURAo5jP4ik_y4" },
 
   // ---- EXPERIENCES ----
   { category: "experience", name: "Busan Movie Experience Museum", sub: null, address: "12, Daecheong-ro 126beon-gil, Jung-gu", lat: 35.101702, lng: 129.0337655, placeId: "ChIJ2eNoiHTpaDUROvt2dSyLeI4" },
