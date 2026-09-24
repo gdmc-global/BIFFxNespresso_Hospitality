@@ -1,32 +1,47 @@
 # BIFF x NESPRESSO Hospitality — Guest Web Guide
 
-A static, index-based hospitality guide for BIFF x NESPRESSO guests, split into two
-programs guests select from the homepage:
+A static, index-based hospitality guide for BIFF x NESPRESSO guests, covering
+three sections reachable from the homepage:
 
-- **Meal** (`meal.html`) — hosted meals, optional local restaurants, B2B dining
-- **Optional Program** (`optional-program.html`) — BIFF experiences, coordinated
-  festival programs, Busan tours, and the concierge service
+- **Meal** (`meal.html`) — Paradise Hotel dining, optional local restaurants,
+  B2B dining (3 categories, 13 items)
+- **Experiences** (`experiences.html`) — Busan landmarks & activities, plus
+  the exclusive concierge map (2 categories, 9 items + 2 map pages)
+- **Transportation** (`transportation.html`) — step-by-step guide to setting
+  up and using Uber for Business in Korea (3 sections, 8 steps)
 
-No build step, no subfolders — every file (HTML, CSS, JS, images) sits in one
-single folder, so it uploads cleanly even file-by-file through GitHub's web
-"Upload files" button.
+No build step, no subfolders — every file (HTML, CSS, JS, images, fonts)
+sits in one single folder, so it uploads cleanly even file-by-file through
+GitHub's web "Upload files" button.
 
 ## Structure (all files in one folder — no subfolders)
 
 ```
-index.html                 landing page — program selector
-meal.html                  Meal section (3 categories, 13 items)
-optional-program.html      Optional Program section (4 categories, 16 items)
+index.html                 landing page — guide index (Meal / Experiences / Transportation)
+meal.html                  Meal section
+experiences.html           Experiences section (Busan attractions + concierge map)
+transportation.html        Transportation section (Uber for Business guide)
 style.css                  shared design system + @font-face declarations
 main.js                    scroll-spy for the on-page index
-*.jpg / *.png               logos + photos (optimized, ~4 MB total)
+*.jpg / *.png               logos + photos + concierge map pages + Uber screenshots
 ICONESSODisplay-*.woff2     brand display typeface (headlines)
 ICONESSOText-*.woff2        brand text typeface (body, labels, nav)
 ```
 
 Typography uses the brand's own ICONESSO font files, loaded locally via
-`@font-face` in `style.css` — no external font CDN, so it also works if the
-site is ever mirrored somewhere without internet access to Google Fonts.
+`@font-face` in `style.css` — no external font CDN.
+
+Every page's `<head>` also carries Open Graph / Twitter Card meta tags
+(`og:title`, `og:image`, etc.) for link previews in KakaoTalk, Slack, iMessage,
+and similar apps. These are hardcoded to:
+
+```
+https://gdmc-global.github.io/BIFFxNespresso_Hospitality/
+```
+
+**If the repository name or owner ever changes, update the `og:url` and
+`og:image` values at the top of each HTML file to match** — otherwise link
+previews will fail to load the image even though the site itself works fine.
 
 ## Publish to GitHub Pages
 
@@ -57,9 +72,12 @@ git push -u origin main
 
 ## Editing content later
 
-- Each item lives in its own `<article class="card">` block in `meal.html` /
-  `optional-program.html` — copy an existing card to add a new item.
+- Each item lives in its own `<article class="card">` (Meal / Experiences) or
+  `<article class="step-card">` (Transportation) block — copy an existing one
+  to add a new item.
 - Photos are referenced by filename only (e.g. `src="opt1-geumsu-bokguk.jpg"`).
   Add a new photo to this same folder and point a card's `src` at it.
 - Colors, type, and spacing are all defined once as CSS variables at the top
   of `style.css` (`:root { ... }`).
+- To force KakaoTalk/Slack to refresh a stale link preview after editing,
+  use the [Kakao sharing debugger](https://developers.kakao.com/tool/debugger/sharing).
